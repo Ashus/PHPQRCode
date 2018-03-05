@@ -9,7 +9,7 @@ Add the required module to your `composer.json` file:
     {
         "require": {
             ...
-            "aferrandini/phpqrcode": "1.0.1"
+            "frontnode/phpqrcode": "1.0.2"
             ...
         }
     }
