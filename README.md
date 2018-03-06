@@ -9,7 +9,7 @@ Add the required module to your `composer.json` file:
     {
         "require": {
             ...
-            "maiscrm/phpqrcode": "1.0.3"
+            "maiscrm/phpqrcode": "v1.0.4"
             ...
         }
     }
