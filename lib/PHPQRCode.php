@@ -4,7 +4,7 @@
  *
  * Created by arielferrandini
  */
-$QR_BASEDIR = dirname(__FILE__).DIRECTORY_SEPARATOR;
+$QR_BASEDIR = __DIR__.DIRECTORY_SEPARATOR;
 
 // Required libs
 
@@ -15,8 +15,8 @@ $QR_BASEDIR = dirname(__FILE__).DIRECTORY_SEPARATOR;
  */
 
 define('QR_CACHEABLE', true);                                                               // use cache - more disk reads but less CPU power, masks and format templates are stored there
-define('QR_CACHE_DIR', dirname(__FILE__).DIRECTORY_SEPARATOR.'cache'.DIRECTORY_SEPARATOR);  // used when QR_CACHEABLE === true
-define('QR_LOG_DIR', dirname(__FILE__).DIRECTORY_SEPARATOR);                                // default error logs dir
+define('QR_CACHE_DIR', __DIR__.DIRECTORY_SEPARATOR.'cache'.DIRECTORY_SEPARATOR);  // used when QR_CACHEABLE === true
+define('QR_LOG_DIR', __DIR__.DIRECTORY_SEPARATOR);                                // default error logs dir
 
 define('QR_FIND_BEST_MASK', true);                                                          // if true, estimates best mask (spec. default, but extremally slow; set to false to significant performance boost but (propably) worst quality code
 define('QR_FIND_FROM_RANDOM', false);                                                       // if false, checks all masks available, otherwise value tells count of masks need to be checked, mask id are got randomly
@@ -32,7 +32,7 @@ define('QR_FORMAT_PNG',  1);
 
 /** PHPQRCode root directory */
 if (!defined('PHPQRCODE_ROOT')) {
-	define('PHPQRCODE_ROOT', dirname(__FILE__) . '/');
+	define('PHPQRCODE_ROOT', __DIR__ . '/');
 	require(PHPQRCODE_ROOT . 'PHPQRCode/Autoloader.php');
 }
 

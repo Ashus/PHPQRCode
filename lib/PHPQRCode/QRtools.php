@@ -74,7 +74,7 @@ class QRtools {
     //----------------------------------------------------------------------
     public static function clearCache()
     {
-        self::$frames = array();
+        QRspec::$frames = array();
     }
 
     //----------------------------------------------------------------------
@@ -102,7 +102,7 @@ class QRtools {
     //----------------------------------------------------------------------
     public static function log($outfile, $err)
     {
-        if (Constants::QR_LOG_DIR !== false) {
+        if (Constants::QR_LOG_DIR) {
             if ($err != '') {
                 if ($outfile !== false) {
                     file_put_contents(Constants::QR_LOG_DIR.basename($outfile).'-errors.txt', date('Y-m-d H:i:s').': '.$err, FILE_APPEND);
@@ -110,6 +110,8 @@ class QRtools {
                     file_put_contents(Constants::QR_LOG_DIR.'errors.txt', date('Y-m-d H:i:s').': '.$err, FILE_APPEND);
                 }
             }
+        } else {
+            error_log($err);
         }
     }
 

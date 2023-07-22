@@ -93,4 +93,4 @@ class FrameFiller {
         return array('x'=>$x, 'y'=>$y);
     }
 
-} ;
+}

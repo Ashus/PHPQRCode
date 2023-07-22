@@ -37,12 +37,15 @@ class Autoloader
 			return false;
 		}
 
-		$file =	dirname(__FILE__) . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR
+		$file =	__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR
             . str_replace(array('\\', "\0"), array('/', ''), $class).'.php';
 
 		if (is_file($file)) {
 			require $file;
+            return true;
 		}
+
+        return false;
     }
 
 }

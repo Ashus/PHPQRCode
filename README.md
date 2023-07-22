@@ -4,17 +4,7 @@ To install this library please follow the next steps:
 
 ## Install the library using `composer`:
 
-Add the required module to your `composer.json` file:
-
-    {
-        "require": {
-            ...
-            "maiscrm/phpqrcode": "v1.0.4"
-            ...
-        }
-    }
-
-Then run the command `composer update`.
+Run the command `composer require ashus/phpqrcode`.
 
 
 ## Usage

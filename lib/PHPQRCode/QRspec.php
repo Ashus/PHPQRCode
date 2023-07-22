@@ -379,9 +379,9 @@ class QRspec {
 
     /** --------------------------------------------------------------------
      * Put a finder pattern.
-     * @param frame
-     * @param width
-     * @param ox,oy upper-left coordinate of the pattern
+     * @param $frame
+     * @param int $ox
+	 * @param int $oy upper-left coordinate of the pattern
      */
     public static function putFinderPattern(&$frame, $ox, $oy)
     {

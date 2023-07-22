@@ -99,18 +99,19 @@ class QRcode {
     //----------------------------------------------------------------------
     public function encodeString8bit($string, $version, $level)
     {
-        if(string == NULL) {
+        if (empty($string)) {
             throw new Exception('empty string!');
-            return NULL;
         }
 
         $input = new QRinput($version, $level);
-        if($input == NULL) return NULL;
+        if (empty($input)) {
+            return null;
+        }
 
-        $ret = $input->append($input, Constants::QR_MODE_8, strlen($string), str_split($string));
-        if($ret < 0) {
+        $ret = $input->append($input, Constants::QR_MODE_8, strlen($string));
+        if ($ret < 0) {
             unset($input);
-            return NULL;
+            return null;
         }
         return $this->encodeInput($input);
     }
@@ -118,18 +119,18 @@ class QRcode {
     //----------------------------------------------------------------------
     public function encodeString($string, $version, $level, $hint, $casesensitive)
     {
-
-        if($hint != Constants::QR_MODE_8 && $hint != Constants::QR_MODE_KANJI) {
+        if ($hint != Constants::QR_MODE_8 && $hint != Constants::QR_MODE_KANJI) {
             throw new Exception('bad hint');
-            return NULL;
         }
 
         $input = new QRinput($version, $level);
-        if($input == NULL) return NULL;
+        if (empty($input)) {
+            return null;
+        }
 
         $ret = QRsplit::splitStringToQRinput($string, $input, $hint, $casesensitive);
-        if($ret < 0) {
-            return NULL;
+        if ($ret < 0) {
+            return null;
         }
 
         return $this->encodeInput($input);
@@ -139,7 +140,7 @@ class QRcode {
     public static function png($text, $outfile = false, $level = Constants::QR_ECLEVEL_L, $size = 3, $margin = 4, $saveandprint = false, $qrBgColor = Constants::QR_BG_COLOR, $qrCodeColor = Constants::QR_CODE_COLOR)
     {
         $enc = QRencode::factory($level, $size, $margin);
-        return $enc->encodePNG($text, $outfile, $saveandprint, $qrBgColor, $qrCodeColor);
+        $enc->encodePNG($text, $outfile, $saveandprint, $qrBgColor, $qrCodeColor);
     }
 
     //----------------------------------------------------------------------

@@ -10,8 +10,8 @@ namespace PHPQRCode;
 class Constants
 {
     const QR_CACHEABLE = false;
-    const QR_CACHE_DIR = ''; //dirname(__FILE__) . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'cache' . DIRECTORY_SEPARATOR;
-    const QR_LOG_DIR   = '/tmp/qrcode_log/';
+    const QR_CACHE_DIR = ''; // dirname(__FILE__) . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'cache' . DIRECTORY_SEPARATOR;
+    const QR_LOG_DIR   = null; // /tmp/qrcode_log/ or null for default errorlog
 
     const QR_FIND_BEST_MASK = true;
     const QR_FIND_FROM_RANDOM = false;

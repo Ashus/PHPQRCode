@@ -38,8 +38,6 @@ class QRencode {
     public $size = 3;
     public $margin = 4;
 
-    public $structured = 0; // not supported yet
-
     public $level = Constants::QR_ECLEVEL_L;
     public $hint = Constants::QR_MODE_8;
 
@@ -50,28 +48,28 @@ class QRencode {
         $enc->size = $size;
         $enc->margin = $margin;
 
-        switch ($level.'') {
+        switch ((string)$level) {
             case '0':
             case '1':
             case '2':
             case '3':
-                    $enc->level = $level;
+                $enc->level = $level;
                 break;
             case 'l':
             case 'L':
-                    $enc->level = Constants::QR_ECLEVEL_L;
+                $enc->level = Constants::QR_ECLEVEL_L;
                 break;
             case 'm':
             case 'M':
-                    $enc->level = Constants::QR_ECLEVEL_M;
+                $enc->level = Constants::QR_ECLEVEL_M;
                 break;
             case 'q':
             case 'Q':
-                    $enc->level = Constants::QR_ECLEVEL_Q;
+                $enc->level = Constants::QR_ECLEVEL_Q;
                 break;
             case 'h':
             case 'H':
-                    $enc->level = Constants::QR_ECLEVEL_H;
+                $enc->level = Constants::QR_ECLEVEL_H;
                 break;
         }
 
@@ -105,8 +103,9 @@ class QRencode {
 
         QRtools::markTime('after_encode');
 
-        if ($outfile!== false) {
+        if ($outfile !== false) {
             file_put_contents($outfile, join("\n", QRtools::binarize($code->data)));
+            return null;
         } else {
             return QRtools::binarize($code->data);
         }
@@ -128,10 +127,8 @@ class QRencode {
 
             QRimage::png($tab, $outfile, min(max(1, $this->size), $maxSize), $this->margin, $saveandprint, $qrBgColor, $qrCodeColor);
         } catch (Exception $e) {
-            echo $e->getMessage();
-            die();
-
             QRtools::log($outfile, $e->getMessage());
+            throw $e;
         }
     }
 }
